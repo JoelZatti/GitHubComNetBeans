@@ -1,8 +1,8 @@
+
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,40 +13,47 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
- * @author Joel Zatti joelzatti@gmail.com
+ * @author Joel Zatti
+ * joelzatti@gmail.com
  */
 @Entity
-@Table(name = "instituicao")
-public class Instituicao implements Serializable {
-
+@Table(name = "aluno")
+public class Aluno implements Serializable{
     @Id
-    @SequenceGenerator(name = "seq_instituicao", sequenceName = "seq_instituicao_id",
+    @SequenceGenerator(name = "seq_aluno", sequenceName = "seq_aluno_id",
             allocationSize = 1)
-    @GeneratedValue(generator = "seq_instituicao", strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    @GeneratedValue(generator = "seq_aluno", strategy = GenerationType.SEQUENCE)
+    private int id;
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome não pode ser em branco")
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
-    @NotNull(message = "O ano da fundação deve ser informado")
+    @Email(message = "O email deve ser válido")
+    @Length(max = 50, message = "O email não pode ter mais de {max} caracteres")
+    @NotNull(message = "O email não pode ser nulo")
+    @NotBlank(message = "O email não pode ser em branco")
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
+    @NotNull(message = "A data de nascimento deve ser informada")
     @Temporal(TemporalType.DATE)
-    @Column(name = "anofundacao", nullable = false)
-    private Calendar anoFundacao;
+    @Column(name = "nascimento", nullable = false)
+    private Calendar nascimento;
 
-    public Instituicao() {
+    public Aluno() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,18 +65,26 @@ public class Instituicao implements Serializable {
         this.nome = nome;
     }
 
-    public Calendar getAnoFundacao() {
-        return anoFundacao;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAnoFundacao(Calendar anoFundacao) {
-        this.anoFundacao = anoFundacao;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Calendar getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Calendar nascimento) {
+        this.nascimento = nascimento;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + this.id;
         return hash;
     }
 
@@ -84,8 +99,8 @@ public class Instituicao implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Instituicao other = (Instituicao) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        final Aluno other = (Aluno) obj;
+        if (this.id != other.id) {
             return false;
         }
         return true;
