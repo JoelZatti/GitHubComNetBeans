@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -34,22 +36,34 @@ public class Disciplina implements Serializable{
             allocationSize = 1)
     @GeneratedValue(generator = "seq_disciplina", strategy = GenerationType.SEQUENCE)
     private int id;
+    
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome não pode ser em branco")
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
+    
     @NotNull(message = "A descrição não pode ser nula")
     @NotBlank(message = "A descrição não pode estar em branco")
     @Column(name = "descricao", columnDefinition = "text")
     private String descricao;
+    
+    @NotNull(message = "A carga horária não pode ser nula")
     @Column(name = "cargaHoraria", columnDefinition = "numeric(2,2)")  
     private double cargaHoraria;
+    
+    @NotBlank(message = "O campo conhecimentos  mínimos não pode ficar em branco")
     @Column(name = "conhecimentosMinimos", columnDefinition = "text")
     private String conhecimentosMinimos;
+    
     @OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL, 
             orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Nota> notas = new ArrayList<>();   
+    private List<Nota> notas = new ArrayList<>();  
+    
+    @NotNull(message = "O curso não pode ser nulo")
+    @ManyToOne
+    @JoinColumn(name = "curso_id", referencedColumnName = "id", nullable = false)
+    private Curso curso; 
     
     public void adicionarNota(Nota obj){
         obj.setDisciplina(this);
@@ -134,6 +148,14 @@ public class Disciplina implements Serializable{
 
     public void setNotas(List<Nota> notas) {
         this.notas = notas;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
 }

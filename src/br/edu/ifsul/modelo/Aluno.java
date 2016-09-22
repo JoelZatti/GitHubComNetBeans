@@ -30,17 +30,20 @@ public class Aluno implements Serializable{
             allocationSize = 1)
     @GeneratedValue(generator = "seq_aluno", strategy = GenerationType.SEQUENCE)
     private int id;
+    
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome não pode ser em branco")
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
+    
     @Email(message = "O email deve ser válido")
     @Length(max = 50, message = "O email não pode ter mais de {max} caracteres")
     @NotNull(message = "O email não pode ser nulo")
     @NotBlank(message = "O email não pode ser em branco")
     @Column(name = "email", nullable = false, length = 50)
     private String email;
+    
     @NotNull(message = "A data de nascimento deve ser informada")
     @Temporal(TemporalType.DATE)
     @Column(name = "nascimento", nullable = false)

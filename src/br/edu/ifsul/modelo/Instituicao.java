@@ -29,11 +29,13 @@ public class Instituicao implements Serializable {
             allocationSize = 1)
     @GeneratedValue(generator = "seq_instituicao", strategy = GenerationType.SEQUENCE)
     private Integer id;
+
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome não pode ser em branco")
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
+
     @NotNull(message = "O ano da fundação deve ser informado")
     @Temporal(TemporalType.DATE)
     @Column(name = "anofundacao", nullable = false)

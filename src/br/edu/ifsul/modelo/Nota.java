@@ -1,4 +1,3 @@
-
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
@@ -15,31 +14,39 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Joel Zatti
- * joelzatti@gmail.com
+ * @author Joel Zatti joelzatti@gmail.com
  */
 @Entity
 @Table(name = "nota")
-public class Nota implements Serializable{
+public class Nota implements Serializable {
+
     @Id
     @SequenceGenerator(name = "seq_nota", sequenceName = "seq_nota_id",
             allocationSize = 1)
     @GeneratedValue(generator = "seq_nota", strategy = GenerationType.SEQUENCE)
     private int id;
+
+    @NotNull(message = "A primeira nota deve ser informada")
     @Column(name = "nota01", columnDefinition = "numeric(2,2)")
     private double nota01;
+
+    @NotNull(message = "A segunda nota deve ser informada")
     @Column(name = "nota02", columnDefinition = "numeric(2,2)")
     private double nota02;
-    @Column(name = "media", columnDefinition = "numeric(2,2)")    
+
+    @Column(name = "media", columnDefinition = "numeric(2,2)")
     private double media;
+
     @NotNull(message = "O aluno deve ser informado")
     @ManyToOne
     @JoinColumn(name = "aluno_id", referencedColumnName = "id", nullable = false)
     private Aluno aluno;
+
     @NotNull(message = "A disciplina não pode ser nula")
     @ManyToOne
     @JoinColumn(name = "disciplina_id", referencedColumnName = "id", nullable = false)
     private Disciplina disciplina;
+
     public Nota() {
     }
 
@@ -115,6 +122,5 @@ public class Nota implements Serializable{
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-    
 
 }
