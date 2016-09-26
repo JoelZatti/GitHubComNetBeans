@@ -25,6 +25,7 @@ public class Especialidade implements Serializable {
             allocationSize = 1)
     @GeneratedValue(generator = "seq_especialidade", strategy = GenerationType.SEQUENCE)
     private int id;
+    
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome não pode ser em branco")

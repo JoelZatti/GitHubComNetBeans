@@ -1,13 +1,17 @@
-
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -19,35 +23,45 @@ import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
- * @author Joel Zatti
- * joelzatti@gmail.com
+ * @author Joel Zatti joelzatti@gmail.com
  */
 @Entity
 @Table(name = "aluno")
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
+
     @Id
     @SequenceGenerator(name = "seq_aluno", sequenceName = "seq_aluno_id",
             allocationSize = 1)
     @GeneratedValue(generator = "seq_aluno", strategy = GenerationType.SEQUENCE)
     private int id;
-    
+
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
     @NotBlank(message = "O nome não pode ser em branco")
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
-    
+
     @Email(message = "O email deve ser válido")
     @Length(max = 50, message = "O email não pode ter mais de {max} caracteres")
     @NotNull(message = "O email não pode ser nulo")
     @NotBlank(message = "O email não pode ser em branco")
     @Column(name = "email", nullable = false, length = 50)
     private String email;
-    
+
     @NotNull(message = "A data de nascimento deve ser informada")
     @Temporal(TemporalType.DATE)
     @Column(name = "nascimento", nullable = false)
     private Calendar nascimento;
+
+    @ManyToMany
+    @JoinTable(name = "aluno_disciplina",
+            joinColumns
+            = @JoinColumn(name = "aluno", referencedColumnName = "id",
+                    nullable = false),
+            inverseJoinColumns
+            = @JoinColumn(name = "disciplina", referencedColumnName = "id",
+                    nullable = false))
+    private List<Disciplina> aluno_disciplina = new ArrayList<>();
 
     public Aluno() {
     }
@@ -107,6 +121,14 @@ public class Aluno implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public List<Disciplina> getAluno_disciplina() {
+        return aluno_disciplina;
+    }
+
+    public void setAluno_disciplina(List<Disciplina> aluno_disciplina) {
+        this.aluno_disciplina = aluno_disciplina;
     }
 
 }
