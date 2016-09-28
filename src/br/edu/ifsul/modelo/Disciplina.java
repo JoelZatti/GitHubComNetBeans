@@ -50,7 +50,7 @@ public class Disciplina implements Serializable {
     private String descricao;
 
     @NotNull(message = "A carga horária não pode ser nula")
-    @Column(name = "cargaHoraria", columnDefinition = "numeric(2,1)")
+    @Column(name = "cargaHoraria", columnDefinition = "numeric(12,2)")
     private double cargaHoraria;
 
     @NotBlank(message = "O campo conhecimentos  mínimos não pode ficar em branco")

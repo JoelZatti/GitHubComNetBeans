@@ -40,8 +40,8 @@ public class TestePersistirDisciplinaAluno {
     public void teste() {
         boolean exception = false;
         try {
-            Disciplina d = new Disciplina();
-            Aluno a = em.find(Aluno.class, 1);
+            Disciplina d = em.find(Disciplina.class, 2);
+            Aluno a = em.find(Aluno.class, 1);            
             d.getDisciplina_aluno().add(a);
             em.getTransaction().begin();
             em.persist(d);

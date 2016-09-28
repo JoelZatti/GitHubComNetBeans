@@ -27,14 +27,14 @@ public class Nota implements Serializable {
     private int id;
 
     @NotNull(message = "A primeira nota deve ser informada")
-    @Column(name = "nota01", columnDefinition = "numeric(2,1)")
+    @Column(name = "nota01", columnDefinition = "numeric(12,2)")
     private double nota01;
 
     @NotNull(message = "A segunda nota deve ser informada")
-    @Column(name = "nota02", columnDefinition = "numeric(2,1)")
+    @Column(name = "nota02", columnDefinition = "numeric(12,2)")
     private double nota02;
 
-    @Column(name = "media", columnDefinition = "numeric(2,1)")
+    @Column(name = "media", columnDefinition = "numeric(12,2)")
     private double media;
 
     @NotNull(message = "O aluno deve ser informado")
