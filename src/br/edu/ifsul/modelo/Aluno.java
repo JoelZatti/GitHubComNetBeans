@@ -33,7 +33,7 @@ public class Aluno implements Serializable {
     @SequenceGenerator(name = "seq_aluno", sequenceName = "seq_aluno_id",
             allocationSize = 1)
     @GeneratedValue(generator = "seq_aluno", strategy = GenerationType.SEQUENCE)
-    private int id;
+    private Integer id;
 
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
@@ -66,11 +66,11 @@ public class Aluno implements Serializable {
     public Aluno() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
