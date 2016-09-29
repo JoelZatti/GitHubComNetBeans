@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -101,7 +102,7 @@ public class Aluno implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.id;
+        hash = 71 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -117,11 +118,13 @@ public class Aluno implements Serializable {
             return false;
         }
         final Aluno other = (Aluno) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
+
+   
 
     public List<Disciplina> getAluno_disciplina() {
         return aluno_disciplina;
