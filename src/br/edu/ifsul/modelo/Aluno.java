@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -27,6 +29,7 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author Joel Zatti joelzatti@gmail.com
  */
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "aluno")
 public class Aluno implements Serializable {
 
@@ -101,8 +104,8 @@ public class Aluno implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -123,8 +126,6 @@ public class Aluno implements Serializable {
         }
         return true;
     }
-
-   
 
     public List<Disciplina> getAluno_disciplina() {
         return aluno_disciplina;

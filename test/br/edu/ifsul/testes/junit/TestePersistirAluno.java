@@ -41,8 +41,8 @@ public class TestePersistirAluno {
         boolean exception = false;
         try {
             Aluno a = new Aluno();
-            a.setNome("Joel");
-            a.setEmail("joelzatti@gmail.com");
+            a.setNome("João");
+            a.setEmail("joao@gmail.com");
             //Criando um Objeto SimpleDateFormat passando o pattern 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 // Definindo que o SimpleDateFormat não converterá datas inválidas 
@@ -53,7 +53,7 @@ public class TestePersistirAluno {
 
             try {
 //Conversão de String para calendar 
-                minhaData.setTime(sdf.parse("27/05/1978"));
+                minhaData.setTime(sdf.parse("25/02/1970"));
                 a.setNascimento(minhaData);
             } catch (Exception e) {
                 System.out.println("Data inválida");

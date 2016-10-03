@@ -54,7 +54,7 @@ public class Especialidade implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 13 * hash + this.id;
+        hash = 67 * hash + this.id;
         return hash;
     }
 
@@ -76,4 +76,5 @@ public class Especialidade implements Serializable {
         return true;
     }
 
+   
 }

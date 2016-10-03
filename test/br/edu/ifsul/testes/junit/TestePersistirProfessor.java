@@ -1,7 +1,7 @@
 package br.edu.ifsul.testes.junit;
 
+import br.edu.ifsul.modelo.Aluno;
 import br.edu.ifsul.modelo.Especialidade;
-import br.edu.ifsul.modelo.Instituicao;
 import br.edu.ifsul.modelo.Professor;
 import java.util.Calendar;
 import javax.persistence.EntityManager;
@@ -41,7 +41,7 @@ public class TestePersistirProfessor {
             Professor pf = new Professor();
             pf.setTitulacao("Dr");
             pf.setTopicosInteresse("Java"); 
-            pf.setEspecialidade(em.find(Especialidade.class, 1));
+            pf.setEspecialidade(em.find(Especialidade.class, 1)); 
             em.getTransaction().begin();
             em.persist(pf);
             em.getTransaction().commit();
