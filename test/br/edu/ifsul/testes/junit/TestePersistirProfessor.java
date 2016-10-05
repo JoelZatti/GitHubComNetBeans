@@ -42,6 +42,9 @@ public class TestePersistirProfessor {
             pf.setTitulacao("Dr");
             pf.setTopicosInteresse("Java"); 
             pf.setEspecialidade(em.find(Especialidade.class, 1)); 
+            pf.setNome("Pedro");
+            pf.setEmail("pedro@gmail.com");
+            pf.setNascimento(Calendar.getInstance());
             em.getTransaction().begin();
             em.persist(pf);
             em.getTransaction().commit();

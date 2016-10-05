@@ -36,7 +36,7 @@ public class TestePersistirEspecialidade {
         boolean exception = false;
         try {
             Especialidade es = new Especialidade();
-            es.setNome("Java");
+            es.setNome("Php");
             em.getTransaction().begin();
             em.persist(es);
             em.getTransaction().commit();

@@ -1,6 +1,7 @@
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Especialidade implements Serializable {
     @SequenceGenerator(name = "seq_especialidade", sequenceName = "seq_especialidade_id",
             allocationSize = 1)
     @GeneratedValue(generator = "seq_especialidade", strategy = GenerationType.SEQUENCE)
-    private int id;
+    private Integer id;
     
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
@@ -35,11 +36,11 @@ public class Especialidade implements Serializable {
     public Especialidade() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,8 +54,8 @@ public class Especialidade implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + this.id;
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -70,11 +71,11 @@ public class Especialidade implements Serializable {
             return false;
         }
         final Especialidade other = (Especialidade) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
 
-   
+    
 }

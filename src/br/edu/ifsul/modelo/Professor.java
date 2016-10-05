@@ -21,7 +21,7 @@ public class Professor extends Aluno implements Serializable {
     @NotNull(message = "A titulação não pode ser nula")
     @NotBlank(message = "A titulação deve ser informado")
     @Length(max = 20, message = "A titulação não pode ter mais de {max} caracteres")
-    @Column(name = "titulacao", length = 20, nullable = false, unique = true)
+    @Column(name = "titulacao", length = 20, nullable = false)
     private String titulacao;
 
     @NotNull(message = "Os Tópicos de Interesse não podem ser nulos")
