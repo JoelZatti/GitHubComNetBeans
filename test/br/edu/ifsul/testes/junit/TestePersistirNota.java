@@ -42,7 +42,7 @@ public class TestePersistirNota {
             n.setNota02(9.0);
             n.setMedia((n.getNota01() + n.getNota02()) / 2);
             n.setAluno(em.find(Aluno.class, 1));
-            n.setDisciplina(em.find(Disciplina.class, 2));
+            n.setDisciplina(em.find(Disciplina.class, 1));
             em.getTransaction().begin();
             em.persist(n);
             em.getTransaction().commit();

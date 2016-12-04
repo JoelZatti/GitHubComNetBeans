@@ -34,7 +34,7 @@ public class Curso implements Serializable {
     @SequenceGenerator(name = "seq_curso", sequenceName = "seq_curso_id",
             allocationSize = 1)
     @GeneratedValue(generator = "seq_curso", strategy = GenerationType.SEQUENCE)
-    private int id;
+    private Integer id;
 
     @Length(max = 50, message = "O nome não pode ter mais de {max} caracteres")
     @NotNull(message = "O nome não pode ser nulo")
@@ -83,11 +83,11 @@ public class Curso implements Serializable {
     public Curso() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -134,7 +134,7 @@ public class Curso implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + this.id;
+        hash = 47 * hash + this.id;
         return hash;
     }
 

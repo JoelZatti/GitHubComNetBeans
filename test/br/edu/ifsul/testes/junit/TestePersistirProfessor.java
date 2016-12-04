@@ -39,11 +39,11 @@ public class TestePersistirProfessor {
         boolean exception = false;
         try {
             Professor pf = new Professor();
-            pf.setTitulacao("Dr");
-            pf.setTopicosInteresse("Java"); 
+            pf.setTitulacao("Mr");
+            pf.setTopicosInteresse("Php2"); 
             pf.setEspecialidade(em.find(Especialidade.class, 1)); 
-            pf.setNome("Pedro");
-            pf.setEmail("pedro@gmail.com");
+            pf.setNome("João");
+            pf.setEmail("joao@gmail.com");
             pf.setNascimento(Calendar.getInstance());
             em.getTransaction().begin();
             em.persist(pf);

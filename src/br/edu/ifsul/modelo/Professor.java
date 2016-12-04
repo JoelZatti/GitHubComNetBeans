@@ -19,13 +19,13 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Professor extends Aluno implements Serializable {
 
     @NotNull(message = "A titulação não pode ser nula")
-    @NotBlank(message = "A titulação deve ser informado")
+    @NotBlank(message = "A titulação deve ser informada")
     @Length(max = 20, message = "A titulação não pode ter mais de {max} caracteres")
     @Column(name = "titulacao", length = 20, nullable = false)
     private String titulacao;
 
-    @NotNull(message = "Os Tópicos de Interesse não podem ser nulos")
-    @NotBlank(message = "Os Tópicos de Interesse deve ser informado")
+    @NotNull(message = "O(s) Tópico(s) de Interesse(s) não pode(m) ser nulo(s)")
+    @NotBlank(message = "O(s) Tópico(s) de Interesse(s) deve(m) ser informado(s)")
     @Column(name = "topicosInteresse", columnDefinition = "text")
     private String topicosInteresse;
 

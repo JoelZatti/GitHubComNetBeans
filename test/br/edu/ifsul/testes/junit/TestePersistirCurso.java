@@ -41,7 +41,7 @@ public class TestePersistirCurso {
             Curso c = new Curso();
             c.setNome("TSPI");
             c.setSigla("TSPI");
-            c.setDescricao("Curso superior");
+            c.setDescricao("Curso superior2");
             c.setAtivo(true);
             c.setInicioAtividades(Calendar.getInstance());
             c.setInstituicao(em.find(Instituicao.class, 1));
